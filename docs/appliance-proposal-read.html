@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Appliance Passport — Project Proposal</title>
+<style>body{margin:0;font-family:Georgia,serif;background:#f4f7f5;color:#14241d}main{max-width:820px;margin:0 auto;padding:36px 18px 64px}.card{background:#fff;border:1px solid #d7e4dc;border-radius:18px;padding:32px}h1{font-family:ui-sans-serif,system-ui,sans-serif;margin:0 0 8px}h2{font-family:ui-sans-serif,system-ui,sans-serif;font-size:1rem;color:#1f7a52;margin:18px 0 6px}p{line-height:1.6;margin:0 0 8px}.meta{font-family:ui-sans-serif,system-ui,sans-serif;color:#4d675c}a.btn{font-family:ui-sans-serif,system-ui,sans-serif;display:inline-block;margin-top:18px;background:#1f7a52;color:#fff;text-decoration:none;padding:12px 16px;border-radius:10px;font-weight:700}</style></head>
+<body><main><article class="card">
+<p class="meta">UGREEN Hackathon 2026 · Open Innovation · Most Creative entry</p>
+<h1>Appliance Passport</h1>
+<p class="meta">Skill: appliance-passport · 366 words · static-pass ZIP</p>
+<h2>1. What does your Skill do?</h2><p>It turns appliance nameplate photos and manuals already on a NAS into one confirmed passport of brand, model, serial, and the matching manual.</p>
+<h2>2. Who is your target user, and what is their problem?</h2><p>Homeowners and renters who photograph the sticker when something breaks, then cannot find the manual, model, or serial months later. The photos and PDFs sit in different folders and never become a usable record.</p>
+<h2>3. What is your solution?</h2><p>appliance-passport reads each label twice, keeps a field only when both reads agree, matches that exact brand and model to a manual on the NAS, and saves a Markdown passport after confirmation.</p>
+<h2>4. What is the main user flow?</h2><p>User names a label-photo folder and a manual folder, reviews a table of agreed fields and matches, drops unsure rows, then confirms a save into an Appliance Passport folder.</p>
+<h2>5. How is your idea different?</h2><p>A cloud visual search does not join private sticker photos to the household manuals already stored beside them. This Skill refuses to guess a serial or a lookalike brand, and it never deletes the originals.</p>
+<h2>6. Which UGREEN AI NAS features does it use?</h2><p>file-agent lists the two folders; photo-agent reads each nameplate twice; document-agent checks manuals against agreed brand and model strings; knowledge-agent saves the confirmed passport.</p>
+<h2>7. Technical approach</h2><p>Delegate-only Markdown Skill. ug-filesystem to file-agent, ug-photo to photo-agent, ug-document to document-agent, ug-knowledge to knowledge-agent. Inputs are the two folders, a save folder, and preview or save mode. No custom executable.</p>
+<h2>8. Built vs still to test</h2><p>Built: SKILL.md, pairing and safety references, static-pass ZIP, and this proposal. NAS testing still needs real stickers, blurry plates, and manuals that almost match.</p>
+<h2>9. Finalist tests</h2><p>Core A: three clear labels and two manuals, one true match and one non-match. Core B: user drops the unsure row and only confirmed rows are saved. Edge: an empty label folder stops and does not scan the rest of the NAS.</p>
+<h2>10. Limits</h2><p>Forty labels and forty manuals per run. Faded stickers stay blank. Serials are previewed before save. Depends on UGOS experts and platform approval. It does not call a manufacturer website.</p>
+<a class="btn" href="./appliance-proposal-download.html">Download the PDF</a>
+</article></main></body></html>
