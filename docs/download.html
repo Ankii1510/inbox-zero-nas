@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inbox Zero for NAS — Downloads</title>
+  <style>
+    :root { color-scheme: light; --bg:#0f1f1a; --card:#173028; --text:#e8f2ec; --accent:#3dcf8e; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, sans-serif; background:radial-gradient(circle at top left,#1d4a3a,#0f1f1a 55%); color:var(--text); min-height:100vh; }
+    main { max-width:720px; margin:0 auto; padding:48px 20px; }
+    .card { background:var(--card); border:1px solid #2c5a48; border-radius:16px; padding:28px; }
+    h1 { margin:0 0 8px; font-size:1.6rem; }
+    p { opacity:.9; line-height:1.5; }
+    button, a.btn { display:inline-block; margin:8px 8px 0 0; padding:12px 16px; border:0; border-radius:10px; background:var(--accent); color:#062016; font-weight:700; text-decoration:none; cursor:pointer; }
+    .muted { font-size:.92rem; opacity:.75; }
+    code { background:#0c1814; padding:2px 6px; border-radius:6px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="card">
+      <h1>Inbox Zero for NAS</h1>
+      <p>UGREEN Hackathon 2026 Round 1 downloads. Click to decode and save the submission files.</p>
+      <button id="zipBtn" type="button">Download Skill ZIP</button>
+      <button id="pdfBtn" type="button">Download Proposal PDF</button>
+      <p class="muted">Source: <a href="https://github.com/Ankii1510/inbox-zero-nas" style="color:#9be7c4">github.com/Ankii1510/inbox-zero-nas</a></p>
+      <p id="status" class="muted"></p>
+    </div>
+  </main>
+  <script>
+    async function downloadB64(path, filename, mime) {
+      const status = document.getElementById('status');
+      status.textContent = 'Preparing ' + filename + '...';
+      const res = await fetch(path);
+      if (!res.ok) throw new Error('Failed to fetch ' + path);
+      const b64 = (await res.text()).trim();
+      const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+      const blob = new Blob([bin], { type: mime });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = filename; a.click();
+      URL.revokeObjectURL(url);
+      status.textContent = 'Downloaded ' + filename;
+    }
+    const base = '../submission/';
+    document.getElementById('zipBtn').onclick = () => downloadB64(base + 'inbox-zero-nas.zip.b64', 'inbox-zero-nas.zip', 'application/zip').catch(e => { document.getElementById('status').textContent = e.message; });
+    document.getElementById('pdfBtn').onclick = () => downloadB64(base + 'project-proposal.pdf.b64', 'project-proposal.pdf', 'application/pdf').catch(e => { document.getElementById('status').textContent = e.message; });
+  </script>
+</body>
+</html>
