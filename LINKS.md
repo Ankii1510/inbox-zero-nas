@@ -1,12 +1,16 @@
 # Devpost links
 
-## Try it out
+## Try it out (paste these)
 
-- **Code:** https://github.com/Ankii1510/inbox-zero-nas
-- **Skill ZIP download:** https://github.com/Ankii1510/inbox-zero-nas/raw/main/submission/inbox-zero-nas.zip
-- **Proposal PDF download:** https://github.com/Ankii1510/inbox-zero-nas/raw/main/submission/project-proposal.pdf
-- **Thumbnail:** https://github.com/Ankii1510/inbox-zero-nas/raw/main/submission/assets/inbox-zero-nas-thumbnail.jpg
+1. **Code / GitHub:** https://github.com/Ankii1510/inbox-zero-nas
+2. **Downloads page (ZIP + PDF):** https://raw.githack.com/Ankii1510/inbox-zero-nas/main/docs/download.html
+
+### Backup download pages
+
+- Skill ZIP: https://gofile.io/d/kOmNYA6Q
+- Proposal PDF: https://gofile.io/d/bwvFVflO
+- Thumbnail: https://gofile.io/d/rFjaDQee
 
 ## Notes
 
-Round 1 does not need a live NAS demo. The Skill runs on UGREEN AI NAS / Uliya after Finalist access.
+Round 1 does not need a live NAS demo. The downloads page decodes checked-in `.b64` assets in-browser.
