@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>View PDF — Project Proposal</title>
+  <style>
+    html, body { margin:0; height:100%; background:#111; }
+    #bar { font-family:ui-sans-serif,system-ui,sans-serif; background:#173028; color:#e8f2ec; padding:10px 14px; display:flex; gap:12px; align-items:center; }
+    #bar a { color:#9be7c4; }
+    #status { opacity:.8; }
+    iframe { border:0; width:100%; height:calc(100% - 44px); background:#333; }
+  </style>
+</head>
+<body>
+  <div id="bar">
+    <strong>Project Proposal PDF</strong>
+    <a href="./project-proposal-read.html">Read as webpage</a>
+    <a href="./project-proposal.html">Download PDF</a>
+    <span id="status">Loading…</span>
+  </div>
+  <iframe id="viewer" title="Project Proposal PDF"></iframe>
+  <script>
+    (async () => {
+      const status = document.getElementById('status');
+      try {
+        const res = await fetch('../submission/project-proposal.pdf.b64');
+        if (!res.ok) throw new Error('Could not load PDF');
+        const b64 = (await res.text()).trim();
+        const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+        const url = URL.createObjectURL(new Blob([bin], { type: 'application/pdf' }));
+        document.getElementById('viewer').src = url;
+        status.textContent = 'Ready';
+      } catch (e) {
+        status.textContent = e.message;
+      }
+    })();
+  </script>
+</body>
+</html>
